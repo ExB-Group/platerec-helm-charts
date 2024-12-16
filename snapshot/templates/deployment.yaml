@@ -44,13 +44,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: TOKEN
-                  name: {{ include "platerec-snapshot.fullname" . }}-auth
+                  name: {{ include "platerec-snapshot.secretname" . }}
             - name: "LICENSE_KEY"
               valueFrom:
                 secretKeyRef:
                   key: LICENSE_KEY
-                  name: {{ include "platerec-snapshot.fullname" . }}-auth
-
+                  name: {{ include "platerec-snapshot.secretname" . }}
           ports:
             - name: http
               containerPort: 8080
