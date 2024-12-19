@@ -19,6 +19,9 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+{{- if and (.Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress") .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
+{{- end }}
 {{- if .Values.ingress.tls }}
   tls:
   {{- range .Values.ingress.tls }}
