@@ -37,7 +37,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ if .Values.image.country }}{{ .Values.image.country }}-{{ end }}{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: "TOKEN"
